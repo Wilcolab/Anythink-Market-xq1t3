@@ -1,3 +1,3 @@
 #!/bin/sh
 
-yarn seeds
+node ./backend/scripts/seeds.js
