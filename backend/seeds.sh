@@ -1,3 +1,3 @@
 #!/bin/sh
 
-node ./backend/scripts/seeds.js
+node ./scripts/seeds.js
