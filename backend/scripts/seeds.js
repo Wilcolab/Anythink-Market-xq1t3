@@ -34,6 +34,8 @@ testUser
             itemsToInsert.push(anItem.save());
         }
         await Promise.allSettled(itemsToInsert);
+        await mongoose.disconnect();
+        return;
     });
 }
 
