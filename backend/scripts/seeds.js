@@ -7,7 +7,7 @@ require("../models/Comment");
 
 var User = mongoose.model("User");
 var Item = mongoose.model("Item");
-var Comment = mongoose.model("comment");
+var Comment = mongoose.model("Comment");
 
 
 var items = ["bike", "car", "house", "phone", "laptop"];
@@ -18,6 +18,15 @@ var randomNumber = (number)=>{
 };
 
 var seedDB = async ()=>{
+    let all =[];
+    for (let index = 0; index < 100; index++) {
+        all.push(addToAllDbs());
+    }
+    await Promise.allSettled(all);
+    mongoose.disconnect();
+    return  
+}
+var addToAllDbs = async ()=>{
     var testUser = new User();
     let seed = randomNumber(70);
     testUser.username = `testUser${seed}`;
@@ -34,9 +43,7 @@ var seedDB = async ()=>{
     aComment.item = anItem;
     aComment.seller = testUser;
     await aComment.save();
-    mongoose.disconnect();
     return;
-    
 }
 
 mongoose.connect(process.env.MONGODB_URI);
