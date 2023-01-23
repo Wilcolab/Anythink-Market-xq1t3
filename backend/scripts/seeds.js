@@ -34,12 +34,11 @@ var seedDB = async ()=>{
     aComment.item = anItem;
     aComment.seller = testUser;
     await aComment.save();
+    mongoose.disconnect();
     return;
     
 }
 
 mongoose.connect(process.env.MONGODB_URI);
 
-await seedDB();
-
-mongoose.disconnect();
+seedDB();
