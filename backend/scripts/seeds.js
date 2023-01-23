@@ -20,7 +20,7 @@ var randomNumber = (number)=>{
 var seedDB = async ()=>{
     let all =[];
     for (let index = 0; index < 100; index++) {
-        all.push(addToAllDbs(i));
+        all.push(addToAllDbs(index));
     }
     await Promise.allSettled(all);
     mongoose.disconnect();
