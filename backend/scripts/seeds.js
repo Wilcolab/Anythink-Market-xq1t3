@@ -42,6 +42,8 @@ var addToAllDbs = async (seed)=>{
     aComment.item = anItem;
     aComment.seller = testUser;
     await aComment.save();
+    anItem.comments = anItem.comments.connect([aComment]);
+    await anItem.save();
     return;
 }
 
