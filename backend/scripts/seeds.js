@@ -20,15 +20,14 @@ var randomNumber = (number)=>{
 var seedDB = async ()=>{
     let all =[];
     for (let index = 0; index < 100; index++) {
-        all.push(addToAllDbs());
+        all.push(addToAllDbs(i));
     }
     await Promise.allSettled(all);
     mongoose.disconnect();
     return  
 }
-var addToAllDbs = async ()=>{
+var addToAllDbs = async (seed)=>{
     var testUser = new User();
-    let seed = randomNumber(70);
     testUser.username = `testUser${seed}`;
     testUser.email = `notValid${seed}@yahoo.com`
     testUser.setPassword("111");
